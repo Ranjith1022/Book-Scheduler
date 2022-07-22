@@ -45,7 +45,7 @@ printf "${yellow}Installaing Resources...${clear}\n"
 sudo apt-get -y install apache2 apache2-bin apache2-data apache2-mpm-prefork libaio1 libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd
 sudo apt-get -y install mysql-server-8.0
 sudo apt-get -y install unzip
-sudo apt install PHP
+sudo apt install php
 #Once installation is complete, start Apache and MariaDB and enable them to start on boot time
 printf "${yellow}Restarting Server and Database...${clear}\n"
 sudo systemctl start apache2
