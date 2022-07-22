@@ -56,7 +56,6 @@
 ```diff
 Notes*:
 
-- It's takes minimum one hour, based upon your internet connection
 
 - If you have any ERROR or SOMETHING contact me through below email.
 
