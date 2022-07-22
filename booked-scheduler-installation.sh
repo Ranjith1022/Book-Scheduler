@@ -61,4 +61,19 @@ EOF
 sudo mv booked-2.8.5 /var/www/html/
 #Change ownership of the booked directory to the www-data user and group.
 sudo chown -R www-data:www-data /var/www/html/booked
+#First remove the old config file
+sudo rm -rf /etc/apache2/sites-available/booked.conf
 #Configure Apache for Booked Scheduler
+sudo cp -r booked.conf /etc/apache2/sites-available/booked.conf
+#Enable the site
+sudo a2ensite /etc/apache2/sites-available/booked.conf
+#Restart the Apache service to read the new virtualhost configuration.
+sudo systemctl restart apache2
+#Copied project configuration
+sudo cp /var/www/html/booked/config/config.php
+#Next, import database schema and data.
+cd /var/www/html/booked
+#First import the create-schema
+mysql -u booked -p bookeddb < database_schema/create-schema.sql
+#Next, import the create-data
+mysql -u booked -p bookeddb < database_schema/create-data.sql
