@@ -42,7 +42,10 @@ sudo apt-get upgrade -y
 #Once your system is up-to-date, restart the system
 #Before starting, you will need to install Apache, PHP, MySQL and other PHP libraries on your system
 printf "${yellow}Installaing Resources...${clear}\n"
-sudo apt-get install apache2 apache2-bin apache2-data libaio1 libapache2-mod-php7.0 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd mariadb-server php7.0 php7.0-cli php7.0-common php7.0-json php7.0-mysql php7.0-readline -y
+sudo apt-get -y install apache2 apache2-bin apache2-data apache2-mpm-prefork libaio1 libapache2-mod-php5 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd
+sudo apt-get -y install mysql-server-8.0
+sudo apt-get -y install unzip
+sudo apt install PHP
 #Once installation is complete, start Apache and MariaDB and enable them to start on boot time
 printf "${yellow}Restarting Server and Database...${clear}\n"
 sudo systemctl start apache2
@@ -78,7 +81,7 @@ cd /etc/apache2/sites-available/
 sudo a2ensite booked.conf
 printf "${green}Site Enabled....${clear}\n"
 #Restart the Apache service to read the new virtualhost configuration.
-sudo systemctl restart apache2
+sudo service apache2 reload
 #Copied project configuration
 sudo cp -r config.php /var/www/html/booked/config/
 #Next, import database schema and data.
