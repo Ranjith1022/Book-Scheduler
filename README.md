@@ -11,7 +11,7 @@ Frappe
 
 ## Introduction: 
 
-  Frappe, pronounced fra-pay, is a full stack, batteries-included, web framework written in Python and Javascript with MariaDB as the database. It is the framework which powers ERPNext, is pretty generic and can be used to build database driven apps.
+  Booked is an open source web based application specially designed to improve scheduling and manage resource utilization. It is written in PHP and uses MySQL or MariaDB to store its data. It is a simple and powerful scheduler with flexible layouts, administrative backend and custom rules. Booked comes with lots of features including reservation start and end reminders, user-based security, flexible quota system, export to Outlook, reservation reminders, and much more.
 
 ## Get Started
 
@@ -19,28 +19,22 @@ Frappe
 
 ## Pre Requisites
 
-  Before you can start with Frappe, be sure you understand the stack it's built on.
+1. PHP 7.4, PHP 8+
+    i) Recommended minimum 256MB memory allocated to PHP
+    ii) gdlib enabled
+4. MySQL 5.6 or greater
+5. Web server
  
-
 ## Installation:
 
-  Before you can use Frappe, you need to install it. We have a complete installation guide which covers all possibilities, this guide will also help you understand the backend stack.
+  The most important settings for installation are script.url and the database settings. script.url should be pointed to the full, public URL for Booked including /Web. Ensure these are correct before continuing with the installation. To configure the application, open /config/config.php and update any settings accordingly. Note: If you try to load the application at this time, you will probably get a blank page. This is because there is no database configured yet.
   
 ### STEP 1:
 
- <strong>```Clone```</strong> main file 
-
-  ```
-      git clone https://github.com/Ranjith1022/Frappe-Framework.git
-  ```
-  
-### STEP 2:
-
-
-  <strong>```RUN```</strong> frappe-installation script file
+  <strong>```RUN```</strong> book-scheduler-installation script file
    
 ```
-  $ sh frappe-installation.sh
+  $ sh book-scheduler-installation.sh
 ```
 
 ### Finally:
@@ -49,7 +43,7 @@ Frappe
   <strong>```check```</strong> below URL
   
 ```
-  http://localhost:8000
+  http://book-scheduler.com
 ```
 
 
