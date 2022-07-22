@@ -44,12 +44,9 @@
   
 ```
   http://book-schedule.com
-```
 
-
-  OR
+  OR 
   
-```  
   http://<your-ip>
 ```
 
