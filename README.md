@@ -17,10 +17,13 @@
 ## Pre Requisites
 
 1. PHP 7.4, PHP 8+
+
     i) Recommended minimum 256MB memory allocated to PHP
+    
     ii) gdlib enabled
-4. MySQL 5.6 or greater
-5. Web server
+    
+2. MySQL 5.6 or greater
+3. Web server
  
 ## Installation:
 
