@@ -40,7 +40,7 @@
   <strong>```check```</strong> below URL
   
 ```
-  http://book-scheduler.com
+  http://book-schedule.com
 ```
 
 
