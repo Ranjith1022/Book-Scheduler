@@ -57,8 +57,10 @@ grant all privileges on bookeddb.* to booked@localhost;
 flush privileges;.
 exit;
 EOF
-#move the booked-2.8.5 directory to the apache web root directory
-sudo mv booked-2.8.5 /var/www/html/
+#unzip the zip file
+sudo  unzip booked-2.8.5.zip
+#move the booked directory to the apache web root directory
+sudo mv booked /var/www/html/
 #Change ownership of the booked directory to the www-data user and group.
 sudo chown -R www-data:www-data /var/www/html/booked
 #First remove the old config file
