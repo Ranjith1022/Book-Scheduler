@@ -5,9 +5,6 @@
   <img width="200" src="https://www.bookedscheduler.com/wp-content/uploads/2021/09/Imagotype.png" alt="Booked">
   </p>
 
-<h1 align="center">
-Booked
-</h1>
 
 ## Introduction: 
 
