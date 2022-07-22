@@ -1,0 +1,64 @@
+# Color variables
+#A script can use escape sequences to produce colored text on the terminal. Colors for text are represented by color codes,
+#including, reset = 0, black = 30, red = 31, green = 32, yellow = 33, blue = 34, magenta = 35, cyan = 36, and white = 37.
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+white='\033[0;37m'
+# Clear the color after that
+clear='\033[0m'
+#bold colors
+bld_red='\033[1;31m'
+bld_green='\033[1;32m'
+bld_yellow='\033[2;33m'
+bld_blue='\033[1;34m'
+bld_magenta='\033[1;35m'
+bld_cyan='\033[1;36m'
+bld_white='\033[1;37m'
+#background colors
+bg_red='\033[0;41m'
+bg_green='\033[0;42m'
+bg_yellow='\033[0;43m'
+bg_blue='\033[0;44m'
+bg_magenta='\033[0;45m'
+bg_cyan='\033[0;46m'
+#text bold
+bold=`tput bold`
+offbold=`tput rmso`
+#Frappe, pronounced fra-pay, is a full stack, batteries-included, web framework written in Python and Javascript with MariaDB as the database.
+#It is the framework which powers ERPNext. It is pretty generic and can be used to build database driven apps.
+#The key difference in Frappe compared to other frameworks is that meta-data is also treated as data and is used to build front-ends very easily.
+#We believe in a monolithic architecture, so Frappe comes with almost everything you need to build a modern web application.
+#It has a full featured Admin UI called the Desk that handles forms, navigation, lists, menus, permissions, file attachment and much more out of the box.
+printf  "${green}Entering the Script file...${clear}\n"
+#The sudo apt-get update command is used to download package information from all configured sources.
+#The sources often defined in the /etc/apt/sources. list file and other files located in /etc/apt/sources.
+#First, update your Ubuntu server to the latest version
+sudo apt-get update -y
+sudo apt-get upgrade -y
+#Once your system is up-to-date, restart the system and login with sudo user
+sudo -i
+#Before starting, you will need to install Apache, PHP, MySQL and other PHP libraries on your system
+sudo apt-get install apache2 apache2-bin apache2-data libaio1 libapache2-mod-php7.0 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd mariadb-server php7.0 php7.0-cli php7.0-common php7.0-json php7.0-mysql php7.0-readline -y
+#Once installation is complete, start Apache and MariaDB and enable them to start on boot time
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo systemctl start mysql
+sudo systemctl enable mysql
+#You will need to secure MariaDB
+sudo mysql -uroot -p << EOF
+alter user root@localhost identified by 'Booked@123';
+create database bookeddb;
+create user booked@localhost identified by 'Booked@DB';
+grant all privileges on bookeddb.* to booked@localhost;
+flush privileges;.
+exit;
+EOF
+#move the booked-2.8.5 directory to the apache web root directory
+sudo mv booked-2.8.5 /var/www/html/
+#Change ownership of the booked directory to the www-data user and group.
+sudo chown -R www-data:www-data /var/www/html/booked
+#Configure Apache for Booked Scheduler
