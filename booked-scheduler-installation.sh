@@ -85,8 +85,8 @@ sudo cp -r config.php /var/www/html/booked/config/
 cd /var/www/html/booked
 #First import the create-schema
 printf "${yellow}Required databases and data's importing... ${clear}\n\n"
-mysql -u booked -p bookeddb < database_schema/create-schema.sql
+mysql -u booked -p Booked@DB < database_schema/create-schema.sql
 #Next, import the create-data
-mysql -u booked -p bookeddb < database_schema/create-data.sql
+mysql -u booked -p Booked@DB < database_schema/create-data.sql
 #Once the Booked Scheduler is configured
 printf "${bold}${green}Book Scheduler Successfully Installed...${offbold}${clear}\n"
