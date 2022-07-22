@@ -39,8 +39,7 @@ printf  "${green}Entering the Script file...${clear}\n"
 #First, update your Ubuntu server to the latest version
 sudo apt-get update -y
 sudo apt-get upgrade -y
-#Once your system is up-to-date, restart the system and login with sudo user
-sudo -i
+#Once your system is up-to-date, restart the system
 #Before starting, you will need to install Apache, PHP, MySQL and other PHP libraries on your system
 printf "${yellow}Installaing Resources...${clear}\n"
 sudo apt-get install apache2 apache2-bin apache2-data libaio1 libapache2-mod-php7.0 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd mariadb-server php7.0 php7.0-cli php7.0-common php7.0-json php7.0-mysql php7.0-readline -y
@@ -55,7 +54,7 @@ sudo mysql -uroot -p << EOF
 alter user root@localhost identified by 'Booked@123';
 create database bookeddb;
 create user booked@localhost identified by 'Booked@DB';
-grant all privileges on bookeddb.* to booked@localhost;
+grant all privileges on bookeddb.* to booked@localhost identified by 'Booked@DB';
 flush privileges;.
 exit;
 EOF
@@ -65,7 +64,7 @@ printf "${green}\nMysql booked user passowrd:${clear}${bg_blue}Booked@DB${clear}
 printf "${yellow}Unzipping project file${clear}\n"
 sudo  unzip booked-2.8.5.zip
 #move the booked directory to the apache web root directory
-sudo mv booked /var/www/html/
+sudo mv -r booked /var/www/html/
 #Change ownership of the booked directory to the www-data user and group.
 sudo chown -R www-data:www-data /var/www/html/booked
 #First remove the old config file
@@ -75,7 +74,8 @@ sudo cp -r booked.conf /etc/apache2/sites-available/
 printf "${green} Site configuration setup completed...${clear}\n"
 #Enable the site
 printf "${yellow}Site Enabling...${clear}\n"
-sudo a2ensite /etc/apache2/sites-available/booked.conf
+cd /etc/apache2/sites-available/
+sudo a2ensite booked.conf
 printf "${green}Site Enabled....${clear}\n"
 #Restart the Apache service to read the new virtualhost configuration.
 sudo systemctl restart apache2
