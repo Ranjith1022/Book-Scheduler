@@ -31,7 +31,7 @@
   <strong>```RUN```</strong> book-scheduler-installation script file
    
 ```
-  $ sh book-scheduler-installation.sh
+  $ sh booked-scheduler-installation.sh
 ```
 
 ### Finally:
