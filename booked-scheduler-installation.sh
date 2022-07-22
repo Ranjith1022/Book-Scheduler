@@ -42,8 +42,10 @@ sudo apt-get upgrade -y
 #Once your system is up-to-date, restart the system and login with sudo user
 sudo -i
 #Before starting, you will need to install Apache, PHP, MySQL and other PHP libraries on your system
+printf "${yellow}Installaing Resources...${clear}\n"
 sudo apt-get install apache2 apache2-bin apache2-data libaio1 libapache2-mod-php7.0 libapr1 libaprutil1 libdbd-mysql-perl libdbi-perl libhtml-template-perl libmysqlclient18 libterm-readkey-perl libwrap0 ssl-cert tcpd mariadb-server php7.0 php7.0-cli php7.0-common php7.0-json php7.0-mysql php7.0-readline -y
 #Once installation is complete, start Apache and MariaDB and enable them to start on boot time
+printf "${yellow}Restarting Server and Database...${clear}\n"
 sudo systemctl start apache2
 sudo systemctl enable apache2
 sudo systemctl start mysql
@@ -57,7 +59,10 @@ grant all privileges on bookeddb.* to booked@localhost;
 flush privileges;.
 exit;
 EOF
+printf "${green}\nMysql root user passowrd:${clear}${bg_blue}Booked@123${clear}\n"
+printf "${green}\nMysql booked user passowrd:${clear}${bg_blue}Booked@DB${clear}\n"
 #unzip the zip file
+printf "${yellow}Unzipping project file${clear}\n"
 sudo  unzip booked-2.8.5.zip
 #move the booked directory to the apache web root directory
 sudo mv booked /var/www/html/
@@ -67,8 +72,11 @@ sudo chown -R www-data:www-data /var/www/html/booked
 sudo rm -rf /etc/apache2/sites-available/booked.conf
 #Configure Apache for Booked Scheduler
 sudo cp -r booked.conf /etc/apache2/sites-available/booked.conf
+printf "${green} Site configuration setup completed...${clear}\n"
 #Enable the site
+printf "${yellow}Site Enabling...${clear}\n"
 sudo a2ensite /etc/apache2/sites-available/booked.conf
+printf "${green}Site Enabled....${clear}\n"
 #Restart the Apache service to read the new virtualhost configuration.
 sudo systemctl restart apache2
 #Copied project configuration
@@ -76,6 +84,9 @@ sudo cp /var/www/html/booked/config/config.php
 #Next, import database schema and data.
 cd /var/www/html/booked
 #First import the create-schema
+printf "${yellow}Required databases and data's importing... ${clear}\n\n"
 mysql -u booked -p bookeddb < database_schema/create-schema.sql
 #Next, import the create-data
 mysql -u booked -p bookeddb < database_schema/create-data.sql
+#Once the Booked Scheduler is configured
+printf "${bold}${green}Book Scheduler Successfully Installed...${offbold}${clear}\n"
