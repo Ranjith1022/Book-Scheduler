@@ -71,7 +71,7 @@ sudo chown -R www-data:www-data /var/www/html/booked
 #First remove the old config file
 sudo rm -rf /etc/apache2/sites-available/booked.conf
 #Configure Apache for Booked Scheduler
-sudo cp -r booked.conf /etc/apache2/sites-available/booked.conf
+sudo cp -r booked.conf /etc/apache2/sites-available/
 printf "${green} Site configuration setup completed...${clear}\n"
 #Enable the site
 printf "${yellow}Site Enabling...${clear}\n"
@@ -80,7 +80,7 @@ printf "${green}Site Enabled....${clear}\n"
 #Restart the Apache service to read the new virtualhost configuration.
 sudo systemctl restart apache2
 #Copied project configuration
-sudo cp /var/www/html/booked/config/config.php
+sudo cp -r config.php /var/www/html/booked/config/
 #Next, import database schema and data.
 cd /var/www/html/booked
 #First import the create-schema
