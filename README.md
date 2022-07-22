@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img width="200" src="https://avatars.githubusercontent.com/u/836974?v=4" alt="Frappe">
+  <img width="200" src="[https://avatars.githubusercontent.com/u/836974?v=4](https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_251,h_71/https://www.bookedscheduler.com/wp-content/uploads/2021/09/Imagotype.png)" alt="Frappe">
   </p>
 
 <h1 align="center">
